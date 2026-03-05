@@ -1,31 +1,49 @@
 import Link from "next/link";
+import { getUserFromSupabase } from "@/lib/supabase/server";
 
-export default function Header() {
+export default async function Header() {
+  const user = await getUserFromSupabase();
+
   return (
     <header className="border-b bg-white">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        
-        {/* Logo / Brand */}
         <Link href="/" className="text-lg font-semibold text-gray-900">
           Women Trades Directory
         </Link>
 
-        {/* Navigation */}
         <nav className="flex items-center gap-6 text-sm">
-          <Link href="/trades" className="text-gray-600 hover:text-pink-600">
-            Trades
-          </Link>
+          {user ? (
+            <>
+              <Link href="/dashboard" className="text-gray-600 hover:text-pink-600">
+                Dashboard
+              </Link>
+              <Link href="/dashboard/profile" className="text-gray-600 hover:text-pink-600">
+                Profile
+              </Link>
 
-          <Link href="/about" className="text-gray-600 hover:text-pink-600">
-            About
-          </Link>
-
-          <Link
-            href="/login"
-            className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700"
-          >
-            Login
-          </Link>
+              {/* ✅ Logout form goes here */}
+              <form action="/actions/logout" method="post">
+                <button
+                  type="submit"
+                  className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700"
+                >
+                  Logout
+                </button>
+              </form>
+            </>
+          ) : (
+            <>
+              <Link href="/login" className="text-gray-600 hover:text-pink-600">
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </nav>
       </div>
     </header>

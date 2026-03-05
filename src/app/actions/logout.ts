@@ -1,10 +1,11 @@
+// src/app/actions/logout.ts
 import { cookies } from 'next/headers'
 import { createServerClient } from '@supabase/ssr'
+import { redirect } from 'next/navigation'
 
-export async function createSupabaseServerClient() {
+export default async function logout() {
   const cookieStore = await cookies()
-
-  return createServerClient(
+  const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
@@ -20,18 +21,13 @@ export async function createSupabaseServerClient() {
       },
     }
   )
-}
 
-export async function getUserFromSupabase() {
-  const supabase = await createSupabaseServerClient()
-  const { data, error } = await supabase.auth.getUser()
-
-  if (error) {
-    if (error.message === 'Auth session missing!') {
-      return null // no logged-in user
-    }
-    throw error
+  // ✅ ignore missing session, just redirect
+  try {
+    await supabase.auth.signOut()
+  } catch (e) {
+    console.warn('Logout error, possibly no session', e)
   }
 
-  return data.user
+  redirect('/login')
 }

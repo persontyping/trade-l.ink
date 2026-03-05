@@ -5,7 +5,7 @@ import '@/styles/globals.css'   // using the path alias @/* -> src/*
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">       {/* ✅ Correct place for <html> */}
+    <html lang="en">
       <body className="bg-gray-50 text-gray-900">
         <Header />
 

@@ -1,28 +1,26 @@
-import { createSupabaseServerClient } from '@/lib/supabase/server'
-import Login from '@/components/Login'
+import Layout from "@/components/layout/layout";
 
-export default async function Home() {
-  const supabase = await createSupabaseServerClient()
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
-
+export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white shadow-lg rounded-xl p-8 max-w-lg">
-        <h1 className="text-3xl font-bold text-pink-600">
-          Women Trades Directory
-        </h1>
+    <Layout>
+      <main className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+        <div className="bg-white shadow-lg rounded-xl p-10 max-w-lg w-full text-center">
+          <h1 className="text-4xl font-extrabold text-pink-600">
+            Women Trades Directory
+          </h1>
 
-        <p className="mt-4 text-gray-600">
-          A community directory for women in trades.
-        </p>
+          <p className="mt-4 text-gray-700 text-lg">
+            A community directory connecting skilled women tradespeople with the community.
+          </p>
 
-        <button className="mt-6 px-5 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700">
-          Join the Directory
-        </button>
-      </div>
-    </main>
-  )
+          <a
+            href="/signup"
+            className="mt-6 inline-block px-6 py-3 bg-pink-600 text-white font-medium rounded-lg hover:bg-pink-700 transition-colors"
+          >
+            Join the Directory
+          </a>
+        </div>
+      </main>
+    </Layout>
+  );
 }
