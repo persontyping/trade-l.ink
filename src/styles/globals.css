@@ -1,4 +1,12 @@
 @import "tailwindcss";
+@font-face {
+  font-family: 'AmaticSC';
+  src: url('/fonts/Amatic_SC/AmaticSC-Regular.ttf') format('truetype');
+  font-weight: 400; /* normal */
+  font-style: normal;
+  font-display: swap;
+}
+
 
 /* ===============================
    THEME VARIABLES
@@ -20,8 +28,8 @@
 
   /* Text */
   --color-text-primary: #e6e1d9;
-  --color-text-secondary: #b9b4ad;
-  --color-text-muted: #8a8f98;
+  --color-text-secondary: #736168;
+  --color-text-three: #435f40;
 
   /* Borders */
   --color-border: rgba(92, 89, 92, 0.50);
@@ -41,16 +49,26 @@
 
   body {
     @apply min-h-screen antialiased;
-    font: 16px / 1.7 normal normal;
+    font: 17px / 2.7 normal normal;
     font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
   }
 
-  h1, h2, h3, h4 {
-    color: var(--color-text-primary);
+  h1 {
+    font: 48px / 2.0 200 normal;
+    letter-spacing: 4px; 
+    font-family: "AmaticSC";
+    color: var(--color-text-secondary);
+  }
+
+  h2, h3, h4 {
+    font: 45px / 2.0 200 normal;
+    font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
+    color: var(--color-text-secondary);
   }
 
   p {
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
+    letter-spacing: 1px; 
   }
 }
 
@@ -65,6 +83,10 @@
     background: var(--color-card);
     border: 1px solid var(--color-border);
     @apply rounded-xl shadow-xl backdrop-blur-md;
+    display: inline-flex;
+    list-style: none;
+    margin: 4em 0 0;
+    padding: 0;
   }
 
   /* Primary button (download button) */
@@ -81,8 +103,19 @@
 
   /* Secondary accent text */
   .accent {
-    color: var(--color-accent-yellow);
+    color: var(--color-accent-cyan);
   }
+
+/* ===============================
+   ATOM FOOTER
+================================= */
+
+.footer {
+  border: 1px solid #4e4b4d;
+    border-radius: 20px;
+
+}
+
 
   /* ===============================
    ATOM HEADER

@@ -15,14 +15,17 @@ export default async function Header() {
 
         {/* Navigation */}
         <nav className="flex items-center gap-6">
+        <Link href="/about" className="logo">
+          ABOUT
+        </Link>
           {user ? (
             <>
               <Link href="/dashboard" className="atom-navlink">
-                Dashboard
+                DASHBOARD
               </Link>
 
               <Link href="/dashboard/profile" className="atom-navlink">
-                Profile
+                PROFILE
               </Link>
 
               <form action="/actions/logout" method="post">
@@ -30,18 +33,18 @@ export default async function Header() {
                   type="submit"
                   className="btn-atom"
                 >
-                  Logout
+                  LOGOUT
                 </button>
               </form>
             </>
           ) : (
             <>
               <Link href="/login" className="atom-navlink">
-                Login
+                LOGIN
               </Link>
 
               <Link href="/signup" className="atom-navlink">
-                Sign Up
+                SIGN UP
               </Link>
             </>
           )}

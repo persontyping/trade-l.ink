@@ -1,26 +1,28 @@
-import Layout from "@/components/layout/layout";
+import Layout from '@/components/layout/layout';
+import AtomCard from '@/components/Card';
 
-export default function Home() {
+export default function HomePage() {
+  const handleClick = () => {
+    alert('Button clicked!');
+  };
+
   return (
     <Layout>
-      <main className="min-h-screen flex items-center justify-center ">
+      <main className="min-h-screen flex items-center justify-center">
+        <div className="p-8 flex flex-col items-center gap-8">
+          <h1 className="text-3xl font-bold">My Cards</h1>
 
+          <AtomCard
+            title="Card 1"
+            imageSrc="/images/sample1.png" // must point to a valid file in /public/images/
+            buttonText="Click Me"
+          />
 
-          <div className="flex items-center justify-center py-20">
-            <div className="atom-card p-10 text-center max-w-md w-full">
-
-              <h1 className="text-4xl tracking-widest mb-4">Women Trades Directory</h1>
-
-              <p className="text-lg mb-6 text-[var(--color-text-secondary)]">
-                A community directory connecting skilled women tradespeople with the community.
-              </p>
-
-              <button className="btn-atom" >
-                Join the Directory
-              </button>
-
-            </div>
-          </div>
+          <AtomCard
+            title="Card 2"
+            imageSrc="/images/sample2.png"
+          />
+        </div>
       </main>
     </Layout>
   );

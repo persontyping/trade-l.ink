@@ -4,15 +4,15 @@ import loginAction from "@/app/actions/login";
 export default function LoginPage() {
     return (
         <Layout>
-            <div className="min-h-screen flex items-center justify-center bg-gray-50">
+            <div className="">
                 <form
                     action={loginAction} // ✅ server action
-                    className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md flex flex-col gap-6"
+                    className="atom-card shadow-lg rounded-xl p-8 w-full max-w-md flex flex-col gap-6"
                 >
                     <h1 className="text-2xl font-bold text-center">Login</h1>
 
                     <label className="flex flex-col">
-                        <span className="text-gray-700">Email</span>
+                        <span className="">Email</span>
                         <input
                             name="email"
                             type="email"
@@ -22,7 +22,7 @@ export default function LoginPage() {
                     </label>
 
                     <label className="flex flex-col">
-                        <span className="text-gray-700">Password</span>
+                        <span className="">Password</span>
                         <input
                             name="password"
                             type="password"
