@@ -5,27 +5,30 @@ export default async function Header() {
   const user = await getUserFromSupabase();
 
   return (
-    <header className="atom-navbar">
-      <div className="atom-navlink atom-navlink:hover flex items-center justify-between">
-        <Link href="/" className="">
-          Women Trades Directory
+    <header className="atom-navbar sticky top-0 z-50 w-full">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-9 flex items-center justify-between">
+
+        {/* Logo */}
+        <Link href="/" className="logo">
+          🌈 TRADE-L.INK
         </Link>
 
+        {/* Navigation */}
         <nav className="flex items-center gap-6">
           {user ? (
             <>
-              <Link href="/dashboard" className="atom-navlink atom-navlink:hover">
+              <Link href="/dashboard" className="atom-navlink">
                 Dashboard
               </Link>
-              <Link href="/dashboard/profile" className="atom-navlink atom-navlink:hover">
+
+              <Link href="/dashboard/profile" className="atom-navlink">
                 Profile
               </Link>
 
-              {/* ✅ Logout form goes here */}
               <form action="/actions/logout" method="post">
                 <button
                   type="submit"
-                  className="btn-atom btn-atom:hover"
+                  className="btn-atom"
                 >
                   Logout
                 </button>
@@ -33,18 +36,17 @@ export default async function Header() {
             </>
           ) : (
             <>
-              <Link href="/login" className="atom-navlink atom-navlink:hover">
+              <Link href="/login" className="atom-navlink">
                 Login
               </Link>
-              <Link
-                href="/signup"
-                className="btn-atom">
-              
+
+              <Link href="/signup" className="atom-navlink">
                 Sign Up
               </Link>
             </>
           )}
         </nav>
+
       </div>
     </header>
   );
