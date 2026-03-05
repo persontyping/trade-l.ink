@@ -3,23 +3,24 @@ import Layout from "@/components/layout/layout";
 export default function Home() {
   return (
     <Layout>
-      <main className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-        <div className="bg-white shadow-lg rounded-xl p-10 max-w-lg w-full text-center">
-          <h1 className="text-4xl font-extrabold text-pink-600">
-            Women Trades Directory
-          </h1>
+      <main className="min-h-screen flex items-center justify-center ">
 
-          <p className="mt-4 text-gray-700 text-lg">
-            A community directory connecting skilled women tradespeople with the community.
-          </p>
 
-          <a
-            href="/signup"
-            className="mt-6 inline-block px-6 py-3 bg-pink-600 text-white font-medium rounded-lg hover:bg-pink-700 transition-colors"
-          >
-            Join the Directory
-          </a>
-        </div>
+          <div className="flex items-center justify-center py-20">
+            <div className="atom-card p-10 text-center max-w-md w-full">
+
+              <h1 className="text-4xl tracking-widest mb-4">Women Trades Directory</h1>
+
+              <p className="text-lg mb-6 text-[var(--color-text-secondary)]">
+                A community directory connecting skilled women tradespeople with the community.
+              </p>
+
+              <button className="btn-atom" >
+                Join the Directory
+              </button>
+
+            </div>
+          </div>
       </main>
     </Layout>
   );

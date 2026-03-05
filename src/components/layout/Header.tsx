@@ -5,19 +5,19 @@ export default async function Header() {
   const user = await getUserFromSupabase();
 
   return (
-    <header className="border-b bg-white">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-lg font-semibold text-gray-900">
+    <header className="atom-navbar">
+      <div className="atom-navlink atom-navlink:hover flex items-center justify-between">
+        <Link href="/" className="">
           Women Trades Directory
         </Link>
 
-        <nav className="flex items-center gap-6 text-sm">
+        <nav className="flex items-center gap-6">
           {user ? (
             <>
-              <Link href="/dashboard" className="text-gray-600 hover:text-pink-600">
+              <Link href="/dashboard" className="atom-navlink atom-navlink:hover">
                 Dashboard
               </Link>
-              <Link href="/dashboard/profile" className="text-gray-600 hover:text-pink-600">
+              <Link href="/dashboard/profile" className="atom-navlink atom-navlink:hover">
                 Profile
               </Link>
 
@@ -25,7 +25,7 @@ export default async function Header() {
               <form action="/actions/logout" method="post">
                 <button
                   type="submit"
-                  className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700"
+                  className="btn-atom btn-atom:hover"
                 >
                   Logout
                 </button>
@@ -33,13 +33,13 @@ export default async function Header() {
             </>
           ) : (
             <>
-              <Link href="/login" className="text-gray-600 hover:text-pink-600">
+              <Link href="/login" className="atom-navlink atom-navlink:hover">
                 Login
               </Link>
               <Link
                 href="/signup"
-                className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700"
-              >
+                className="btn-atom">
+              
                 Sign Up
               </Link>
             </>

@@ -1,12 +1,152 @@
 @import "tailwindcss";
 
+/* ===============================
+   THEME VARIABLES
+================================= */
+
 :root {
-  --background: #f9fafb;
-  --foreground: #111827;
+  /* Background */
+  --color-bg-primary: rgb(53, 51, 52);
+  --color-bg-secondary: rgb(88, 75, 79);
+  --color-bg-tertiary: #343a41;
+
+  /* Navigation */
+  --color-nav: #3f6b69;
+
+  /* Accent Colors */
+  --color-accent-yellow: #f2c94c;
+  --color-accent-orange: #f2994a;
+  --color-accent-teal: #5fb3a9;
+  --color-accent-cyan: #56ccf2;
+
+  /* Text */
+  --color-text-primary: #e6e1d9;
+  --color-text-secondary: #b9b4ad;
+  --color-text-muted: #8a8f98;
+
+  /* Borders */
+  --color-border: #3a4048;
+
+  /* Card */
+  --color-card: #2c3138;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: system-ui, sans-serif;
+/* ===============================
+   BASE STYLES
+================================= */
+
+@layer base {
+  html {
+
+  }
+
+  body {
+    @apply min-h-screen antialiased;
+    font: 16px / 1.7 normal normal;
+    font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--color-text-primary);
+  }
+
+  p {
+    color: var(--color-text-secondary);
+  }
+}
+
+/* ===============================
+   COMPONENT STYLES
+================================= */
+
+@layer components {
+
+  /* Card container (download panel style) */
+  .atom-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    @apply rounded-xl shadow-xl backdrop-blur-md;
+  }
+
+  /* Primary button (download button) */
+  .btn-atom {
+    background: var(--color-accent-yellow);
+    color: #1f242b;
+    @apply font-semibold px-6 py-3 rounded-lg shadow-md transition;
+  }
+
+  .btn-atom:hover {
+    background: #ffd86b;
+    transform: translateY(-1px);
+  }
+
+  /* Secondary accent text */
+  .accent {
+    color: var(--color-accent-yellow);
+  }
+
+  /* ===============================
+   ATOM HEADER
+================================= */
+
+@layer components {
+
+  /* Main navigation */
+  .atom-navbar {
+    background-color: #584b4f;
+    color: #efeae1;
+    font-size: 14px;
+    height: 43px;
+    padding: 5px 0;
+    text-align: left;
+  }
+
+  .atom-navlink {
+    color: #d7d2cb;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .atom-navlink:hover {
+    color: rgb(88, 166, 123);
+  }
+
+
+
+}
+
+}
+
+/* ===============================
+   UTILITIES
+================================= */
+
+@layer utilities {
+
+  /* Subtle radial highlight used behind atom logo */
+  .atom-glow {
+    background: radial-gradient(
+      circle,
+      rgba(242,201,76,0.12) 0%,
+      rgba(242,201,76,0.05) 35%,
+      transparent 70%
+    );
+  }
+
+  /* Circular tech UI ring effect */
+  .tech-ring {
+    border: 2px solid rgba(242,201,76,0.35);
+    box-shadow:
+      0 0 12px rgba(242,201,76,0.25),
+      inset 0 0 10px rgba(242,201,76,0.2);
+  }
+
+  /* Soft glass effect */
+  .glass {
+    backdrop-filter: blur(10px);
+    background: rgba(44,49,56,0.7);
+  }
+
 }
