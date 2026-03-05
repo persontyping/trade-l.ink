@@ -9,20 +9,20 @@ export default async function Home() {
   } = await supabase.auth.getSession()
 
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>Supabase Test</h1>
+    <main className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white shadow-lg rounded-xl p-8 max-w-lg">
+        <h1 className="text-3xl font-bold text-pink-600">
+          Women Trades Directory
+        </h1>
 
-      {session ? (
-        <>
-          <p>✅ Logged in as:</p>
-          <pre>{JSON.stringify(session.user, null, 2)}</pre>
-        </>
-      ) : (
-        <>
-          <p>❌ Not logged in</p>
-          <Login />
-        </>
-      )}
+        <p className="mt-4 text-gray-600">
+          A community directory for women in trades.
+        </p>
+
+        <button className="mt-6 px-5 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700">
+          Join the Directory
+        </button>
+      </div>
     </main>
   )
 }
