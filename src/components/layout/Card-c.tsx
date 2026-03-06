@@ -10,7 +10,7 @@ export default function CardC() {
               <h1 className="text-2xl font-bold text-center">CARD C</h1>
              </div>
 
-              <a href="/auth/signup" className="text-pink-600 hover:underline"></a>
+              <a href="#" className="text-pink-600 hover:underline"></a>
 
         </section>
     );
