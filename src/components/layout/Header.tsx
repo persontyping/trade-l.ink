@@ -15,9 +15,12 @@ export default async function Header() {
 
         {/* Navigation */}
         <nav className="flex items-center gap-6">
-        <Link href="/about" className="logo">
-          ABOUT
-        </Link>
+          <Link href="/" className="">
+            HOME
+          </Link>
+          <Link href="/about" className="">
+            ABOUT
+          </Link>
           {user ? (
             <>
               <Link href="/dashboard" className="atom-navlink">
@@ -39,11 +42,11 @@ export default async function Header() {
             </>
           ) : (
             <>
-              <Link href="/login" className="atom-navlink">
+              <Link href="/auth/login" className="atom-navlink">
                 LOGIN
               </Link>
 
-              <Link href="/signup" className="atom-navlink">
+              <Link href="/auth/signup" className="atom-navlink">
                 SIGN UP
               </Link>
             </>

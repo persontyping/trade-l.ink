@@ -23,15 +23,11 @@ export async function createSupabaseServerClient() {
 }
 
 export async function getUserFromSupabase() {
-  const supabase = await createSupabaseServerClient()
-  const { data, error } = await supabase.auth.getUser()
+  const supabase = await createSupabaseServerClient();
 
-  if (error) {
-    if (error.message === 'Auth session missing!') {
-      return null // no logged-in user
-    }
-    throw error
-  }
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  return data.user
+  return user;
 }
