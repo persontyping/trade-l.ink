@@ -35,7 +35,7 @@ export default function Header() {
           </Link>
 
           <nav className="flex items-center gap-6">
-            <Link href="/">HOME</Link>
+            <Link href="/home">HOME</Link>
             <Link href="/about">ABOUT</Link>
 
             {user ? (
