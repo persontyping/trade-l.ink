@@ -7,20 +7,20 @@ import Footer from '@/components/layout/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html
-      lang="en"
-      className="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]"
-    >
-      <body className={inter.className}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
-  );
+    return (
+        <html
+            lang="en"
+            className="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]"
+        >
+            <body className={`min-h-screen flex flex-col ${inter.className}`}>
+                <Header />
+                <main className="flex-1 max-w-7xl mx-auto w-full px-6">{children}</main>
+                <Footer />
+            </body>
+        </html>
+    );
 }

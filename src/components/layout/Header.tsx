@@ -27,32 +27,36 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="atom-navbar sticky top-0 z-50 w-full">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-9 flex items-center justify-between">
-        <Link href="/" className="logo">
-          🌈 TRADE-L.INK
-        </Link>
+    <section>
+      <header className="atom-navbar sticky top-0 z-50 w-full">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-9 flex items-center justify-between">
 
-        <nav className="flex items-center gap-6">
-          <Link href="/">HOME</Link>
-          <Link href="/about">ABOUT</Link>
+          <Link href="/" className="logo">
+            🌈 TRADE-L.INK
+          </Link>
 
-          {user ? (
-            <>
-              <Link href="/dashboard">DASHBOARD</Link>
-              <Link href="/dashboard/profile">PROFILE</Link>
-              <form action="/actions/logout" method="post">
-                <button type="submit" className="btn-atom">LOGOUT</button>
-              </form>
-            </>
-          ) : (
-            <>
-              <Link href="/auth/login">LOGIN</Link>
-              <Link href="/auth/signup">SIGN UP</Link>
-            </>
-          )}
-        </nav>
-      </div>
-    </header>
+          <nav className="flex items-center gap-6">
+            <Link href="/">HOME</Link>
+            <Link href="/about">ABOUT</Link>
+
+            {user ? (
+              <>
+                <Link href="/dashboard">DASHBOARD</Link>
+                <Link href="/dashboard/profile">PROFILE</Link>
+                <form action="/actions/logout" method="post">
+                  <button type="submit" className="atom-nav-link">LOGOUT</button>
+                </form>
+              </>
+            ) : (
+              <>
+                <Link href="/auth/login">LOGIN</Link>
+                <Link href="/auth/signup">SIGN UP</Link>
+              </>
+            )}
+          </nav>
+        </div>
+      </header>
+      <div className="session-bar sticky top-0 z-50 w-full">hi</div>
+    </section>
   );
 }

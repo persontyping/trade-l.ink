@@ -111,7 +111,7 @@
   color: var(--color-text-primary);
   border: 1px solid var(--color-accent-orange);
 
-  @apply px-6 py-3 rounded-lg transition hover:bg-pink-400;
+  @apply px-6 py-3 rounded-lg transition 
 }
 
   .btn-atom:hover {
@@ -135,7 +135,7 @@
 ================================= */
 
 .footer {
-  border: 1px solid #4e4b4d;
+  border: 1px solid rgba(92, 86, 49, 0.5);
     border-radius: 20px;
 
 }
@@ -157,19 +157,39 @@
     border-bottom: 1px solid var(--color-border);
   }
 
-  .atom-navlink {
+
+  .atom-nav-link{
     color: #d7d2cb;
-    font-weight: 500;
+    font-weight: 300;
     letter-spacing: 0.02em;
     transition: color 0.2s ease;
     cursor: pointer;
+    background:transparent;
+    padding: 1em;
+    border: solid 1px  #ff6bf0;
+
+  .atom-nav-link:hover {
+    background:transparent;
+    border: solid 1px var(--color-accent-cyan);
   }
 
-  .atom-navlink:hover {
-    color: rgb(88, 166, 123);
+  .atom-nav-link:focus {
+    background:transparent;
+   border: solid 1px var(--color-accent-orange);
+  }
   }
 
 
+
+  .session-bar {
+    color: #efeae1;
+    font-size: 14px;
+    height: 25px;
+    padding: 5px 0;
+    text-align: left;
+    border: 1px solid rgb(150, 41, 96);
+    background-color: rgba(232, 231, 216, 1);
+  }
 
 }
 
