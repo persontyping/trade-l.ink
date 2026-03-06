@@ -10,7 +10,7 @@ export default async function logout() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() {
+        getAll() { 
           return cookieStore.getAll()
         },
         setAll(cookiesToSet) {
