@@ -9,7 +9,7 @@ export default async function loginAction(formData: FormData) {
   const email = formData.get("email")?.toString() || "";
   const password = formData.get("password")?.toString() || "";
 
-  const cookieStore = await cookies(); // ✅ NEW
+  const cookieStore = await cookies();
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -28,14 +28,36 @@ export default async function loginAction(formData: FormData) {
     }
   );
 
-  const { error } = await supabase.auth.signInWithPassword({
+  // 1️⃣ Attempt password login
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
-  if (error) {
-    throw new Error(error.message);
+  // Success
+  if (!error && data.session) {
+    redirect("/dashboard");
   }
 
-  redirect("/dashboard");
+  // 2️⃣ Password failed → attempt magic link
+  const { error: otpError } = await supabase.auth.signInWithOtp({
+    email,
+    options: {
+      emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+    },
+  });
+
+  if (otpError) {
+    const message = otpError.message.toLowerCase();
+
+    // 3️⃣ User doesn't exist → redirect to signup
+    if (message.includes("user not found") || message.includes("invalid login")) {
+      redirect(`/signup?email=${encodeURIComponent(email)}`);
+    }
+
+    throw new Error(otpError.message);
+  }
+
+  // 4️⃣ Magic link sent
+  redirect("/check-email");
 }

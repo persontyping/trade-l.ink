@@ -4,7 +4,7 @@ import AuthForm from "@/components/auth/AuthForm";
 export default function LoginPage() {
   return (
     <Layout>
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex items-center min-h-screen">
         <AuthForm />
       </div>
     </Layout>

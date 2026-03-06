@@ -49,12 +49,16 @@
 
   body {
     @apply min-h-screen antialiased;
+ 
+  p{
     font: 17px / 2.7 normal normal;
     font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
+       color: var(--color-text-primary);
+    letter-spacing: 1px; 
   }
 
   h1 {
-    font: 48px / 2.0 200 normal;
+    font-size: 48px;
     letter-spacing: 4px; 
     font-family: "AmaticSC";
     color: var(--color-text-secondary);
@@ -66,10 +70,7 @@
     color: var(--color-text-secondary);
   }
 
-  p {
-    color: var(--color-text-primary);
-    letter-spacing: 1px; 
-  }
+   }
 }
 
 /* ===============================
@@ -77,6 +78,15 @@
 ================================= */
 
 @layer components {
+
+  .b-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    list-style: none;
+    margin: 4em 0 0;
+    padding: 1em;
+        @apply rounded-xl backdrop-blur-md;
+  }
 
   /* Card container (download panel style) */
   .atom-card {
@@ -94,10 +104,24 @@
     background: var(--color-accent-yellow);
     color: #1f242b;
     @apply font-semibold px-6 py-3 rounded-lg shadow-md transition;
-  }
+  }  
+  
+.btn-b {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-accent-orange);
+
+  @apply px-6 py-3 rounded-lg transition hover:bg-pink-400;
+}
 
   .btn-atom:hover {
     background: #ffd86b;
+    transform: translateY(-1px);
+  }
+
+    .btn-atom:focus {
+    background:transparent;
+    border: solid 1px  #ffd86b;
     transform: translateY(-1px);
   }
 
