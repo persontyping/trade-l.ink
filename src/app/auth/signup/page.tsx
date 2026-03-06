@@ -1,8 +1,6 @@
-import Layout from "@/components/layout/zzz-layout";
 
 export default function SignupPage() {
   return (
-    <Layout>
       <div className="flex items-center min-h-screen">
         <div className=" b-card">
           <h1 className="text-center">
@@ -35,6 +33,6 @@ export default function SignupPage() {
           </form>
         </div>
       </div>
-    </Layout>
+
   );
 }
