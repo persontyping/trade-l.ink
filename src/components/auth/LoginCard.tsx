@@ -10,11 +10,11 @@ async function handleSendLoginLink(email: string) {
   const res = await sendLoginLink(formData);
 
   if (res?.success) {
-    alert(res.success);
+    //alert(res.success);
   }
 
   if (res?.error) {
-    alert(res.error);
+    //alert(res.error);
   }
 }
 

@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import LoginCard from "@/components/auth/LoginCard"; // adjust path if needed
 
 export default function HomePage() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function HomePage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <LoginCard />
+ 
     </div>
   );
 }

@@ -49,5 +49,5 @@ export async function logout() {
   }
 
   // 5️⃣ Redirect immediately to home page
-  redirect('/')
+  redirect('/home')
 }
