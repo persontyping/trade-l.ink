@@ -246,6 +246,10 @@ transform: translateY(-1px);
 
 }
 
-.new-profile{
-  color: var(--color-text-three);
+.member-profile{
+  color: var(--color-text-primary);
+}
+
+.member-profile-form{
+  color: var(--color-text-primary);
 }

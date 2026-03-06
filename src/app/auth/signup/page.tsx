@@ -129,12 +129,12 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="new-profile min-h-screen flex items-center justify-center px-6">
-      <div className="max-w-md w-full bg-white p-6 rounded shadow-md">
+    <div className="member-profile min-h-screen flex items-center justify-center px-6">
+      <div className="member-profile max-w-md w-full bg-white p-6 rounded shadow-md">
 
-        <h1 className="text-2xl font-semibold mb-4">Create Account</h1>
+        <h1 className="member-profile text-2xl font-semibold mb-4">Create Account!</h1>
 
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form className="member-profile-form space-y-4" onSubmit={handleSubmit}>
 
           <input
             name="first_name"

@@ -7,7 +7,7 @@ interface EditProfileProps {
   userId: string
 }
 
-export default function EditProfile({ userId }: EditProfileProps) {
+export default function EditMemberProfile({ userId }: EditProfileProps) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [serverError, setServerError] = useState<string | null>(null)
