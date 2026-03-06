@@ -29,7 +29,7 @@
   /* Text */
   --color-text-primary: #e6e1d9;
   --color-text-secondary: #736168;
-  --color-text-three: #435f40;
+  --color-text-three: rgb(35, 34, 34);
 
   /* Borders */
   --color-border: rgba(92, 89, 92, 0.50);
@@ -244,4 +244,8 @@ transform: translateY(-1px);
     background: rgba(44,49,56,0.7);
   }
 
+}
+
+.new-profile{
+  color: var(--color-text-three);
 }

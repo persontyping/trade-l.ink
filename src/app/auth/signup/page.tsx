@@ -129,7 +129,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
+    <div className="new-profile min-h-screen flex items-center justify-center px-6">
       <div className="max-w-md w-full bg-white p-6 rounded shadow-md">
 
         <h1 className="text-2xl font-semibold mb-4">Create Account</h1>
