@@ -1,5 +1,5 @@
 // src/app/about/page.tsx
-import Layout from "@/components/layout/layout";
+import Layout from "@/components/layout/zzz-layout";
 
 export default function DirectoryPage() {
   return (

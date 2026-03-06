@@ -1,9 +1,8 @@
 // src/app/about/page.tsx
-import Layout from "@/components/layout/layout";
 
 export default function AboutPage() {
   return (
-    <Layout>
+
       <div className="max-w-4xl mx-auto px-6 py-12 text-[var(--color-text-primary)]">
         <h1 className="text-3xl font-bold mb-6">THE DIRECTORY</h1>
         <p className=" mb-4">
@@ -13,6 +12,6 @@ export default function AboutPage() {
           We provide an easy-to-use directory where verified women tradespeople can showcase their skills and get discovered.
         </p>
       </div>
-    </Layout>
+
   );
 }
