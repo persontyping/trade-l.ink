@@ -1,10 +1,9 @@
 'use client';
-
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase/browser';
 import type { User } from '@supabase/supabase-js';
-
+import LogoutButton  from "@/components/client/KillSesh";
 export default function Header() {
   const [user, setUser] = useState<User | null>(null);
 
@@ -43,12 +42,7 @@ export default function Header() {
               <>
                 <Link href="/dashboard">DASHBOARD</Link>
                 <Link href="/dashboard/profile">PROFILE</Link>
-
-                <form action="/actions/logout" method="post">
-                  <button type="submit" className="atom-nav-link">
-                    LOGOUT
-                  </button>
-                </form>
+                <LogoutButton>LOGOUT</LogoutButton>
               </>
             ) : (
               <>
@@ -62,7 +56,7 @@ export default function Header() {
 
       {/* Optional session bar */}
       {user && (
-        <div className="session-bar sticky top-12 z-40 w-full atom-nav-link ">
+        <div className="session-bar sticky top-12 z-40 w-full atom-nav-link">
           Logged in as {user.user_metadata?.full_name || user.email}
         </div>
       )}
