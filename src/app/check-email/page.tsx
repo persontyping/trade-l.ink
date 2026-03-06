@@ -33,6 +33,7 @@ export default function AuthCallback() {
 
   if (loading) return <p>Logging in…</p>;
   if (error) return 
-          <p className="text-red-500">Error: {error}</p>;
+          <p className="text-red-500">Error: {error}</p>
+;
   return null;
 }
