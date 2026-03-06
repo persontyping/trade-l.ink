@@ -74,19 +74,15 @@
 }
 
 /* ===============================
-   COMPONENT STYLES
+   CaRD STYLES
 ================================= */
 
 @layer components {
 
-  .b-card {
-    background: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-    list-style: none;
-    margin: 4em 0 0;
-    padding: 1em;
-        @apply rounded-xl backdrop-blur-md;
+  .c-card {
+    
   }
+
 
   /* Card container (download panel style) */
   .atom-card {
@@ -105,6 +101,15 @@
     color: #1f242b;
     @apply font-semibold px-6 py-3 rounded-lg shadow-md transition;
   }  
+
+  .b-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    list-style: none;
+    margin: 4em 0 0;
+    padding: 1em;
+        @apply rounded-xl backdrop-blur-md;
+  }
   
 .btn-b {
   background: transparent;
@@ -178,8 +183,6 @@
    border: solid 1px var(--color-accent-orange);
   }
   }
-
-
 
   .session-bar {
     color: var(--color-bg-primary);
