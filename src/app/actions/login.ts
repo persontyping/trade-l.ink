@@ -26,7 +26,8 @@ const otpResult = await supabase.auth.signInWithOtp({
   },
 });
 
-const redirectUrl = new URL(`${process.env.NEXT_PUBLIC_SITE_URL}/check-email`);
+
+const redirectUrl = new URL( "/check-email", process.env.NEXT_PUBLIC_SITE_URL);
 
 if (otpResult.error) {
   redirectUrl.searchParams.set("error", otpResult.error.message);
