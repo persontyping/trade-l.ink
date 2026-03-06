@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase/browser';
 import type { User } from '@supabase/supabase-js';
 import LogoutButton  from "@/components/client/KillSesh";
+
+
 export default function Header() {
   const [user, setUser] = useState<User | null>(null);
 
@@ -42,7 +44,7 @@ export default function Header() {
               <>
                 <Link href="/dashboard">DASHBOARD</Link>
                 <Link href="/dashboard/profile">PROFILE</Link>
-                <LogoutButton>LOGOUT</LogoutButton>
+      <LogoutButton />
               </>
             ) : (
               <>
