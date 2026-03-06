@@ -37,6 +37,6 @@ export async function logout() {
     console.error('Unexpected logout failure:', err)
   }
 
-  revalidatePath('/', 'layout')
+  revalidatePath('/')
   redirect('/')
 }
