@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase/browser';
@@ -8,30 +9,29 @@ export default function Header() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // fetch session on mount
-    const getSession = async () => {
+    // Fetch session on mount
+    const fetchSession = async () => {
       const { data } = await supabase.auth.getSession();
       setUser(data.session?.user ?? null);
     };
 
-    getSession();
+    fetchSession();
 
-    // subscribe to auth changes
+    // Subscribe to auth changes
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
 
-    return () => {
-      listener.subscription.unsubscribe();
-    };
+    // Clean up subscription
+    return () => listener.subscription.unsubscribe();
   }, []);
 
   return (
     <section>
       <header className="atom-navbar sticky top-0 z-50 w-full">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-9 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-12 flex items-center justify-between">
 
-          <Link href="/" className="logo">
+          <Link href="/" className="logo font-bold text-lg">
             🌈 TRADE-L.INK
           </Link>
 
@@ -43,8 +43,11 @@ export default function Header() {
               <>
                 <Link href="/dashboard">DASHBOARD</Link>
                 <Link href="/dashboard/profile">PROFILE</Link>
+
                 <form action="/actions/logout" method="post">
-                  <button type="submit" className="atom-nav-link">LOGOUT</button>
+                  <button type="submit" className="atom-nav-link">
+                    LOGOUT
+                  </button>
                 </form>
               </>
             ) : (
@@ -56,7 +59,13 @@ export default function Header() {
           </nav>
         </div>
       </header>
-      <div className="session-bar sticky top-0 z-50 w-full">hi</div>
+
+      {/* Optional session bar */}
+      {user && (
+        <div className="session-bar sticky top-12 z-40 w-full atom-nav-link ">
+          Logged in as {user.user_metadata?.full_name || user.email}
+        </div>
+      )}
     </section>
   );
 }

@@ -182,11 +182,10 @@
 
 
   .session-bar {
-    color: #efeae1;
+    color: var(--color-bg-primary);
     font-size: 14px;
-    height: 25px;
     padding: 5px 0;
-    text-align: left;
+    text-align: center;
     border: 1px solid rgb(150, 41, 96);
     background-color: rgba(232, 231, 216, 1);
   }
