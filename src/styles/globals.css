@@ -246,10 +246,10 @@ transform: translateY(-1px);
 
 }
 
-.member-profile{
-  color: var(--color-text-primary);
+.member-profile p, h1{
+  color: var(--color-text-primary); 
 }
 
-.member-profile-form{
+.member-profile-form input{
   color: var(--color-text-primary);
 }

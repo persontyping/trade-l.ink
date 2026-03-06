@@ -7,7 +7,7 @@ export default function LoginPage() {
     <section>
       <LoginCard></LoginCard>
 
-      <UpdateCard></UpdateCard>
+      {/* <UpdateCard></UpdateCard> */}
 
     </section>
 

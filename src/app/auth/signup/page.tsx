@@ -129,12 +129,12 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="member-profile min-h-screen flex items-center justify-center px-6">
-      <div className="member-profile max-w-md w-full bg-white p-6 rounded shadow-md">
+    <div className="member-profile min-h-screen flex text-black items-center justify-center px-6">
+      <div className="text-purple-900 member-profile max-w-md w-full bg-white p-6 rounded shadow-md">
 
-        <h1 className="member-profile text-2xl font-semibold mb-4">Create Account!</h1>
+        <h1 className="text-blue-900 member-profile text-2xl font-semibold text-black cmb-4">Create Account!</h1>
 
-        <form className="member-profile-form space-y-4" onSubmit={handleSubmit}>
+        <form className="text-pink-900 member-profile-form space-y-4" onSubmit={handleSubmit}>
 
           <input
             name="first_name"
@@ -142,7 +142,7 @@ export default function SignUpPage() {
             value={form.first_name}
             onChange={handleChange}
             required
-            className="border p-2 w-full rounded"
+            className="border p-2 text-orange-700 w-full rounded"
           />
 
           <input
