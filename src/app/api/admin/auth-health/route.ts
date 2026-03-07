@@ -8,11 +8,11 @@ const supabase = createClient(
 export async function GET() {
   try {
     // fetch all users
-    const { data, error } = await supabase.auth.admin.listUsers({ limit: 1000 })
+    const { data, error } = await supabase.auth.admin.listUsers()
 
     if (error) throw error
     // normalize the array safely
-    const usersArray: any[] = Array.isArray(data)
+    const usersArray: unknown[] = Array.isArray(data)
       ? data
       : Array.isArray(data?.users)
         ? data.users

@@ -1,8 +1,13 @@
 @import "tailwindcss";
+
+/* ===============================
+   FONTS
+================================= */
+
 @font-face {
-  font-family: 'AmaticSC';
-  src: url('/fonts/Amatic_SC/AmaticSC-Regular.ttf') format('truetype');
-  font-weight: 400; /* normal */
+  font-family: "AmaticSC";
+  src: url("/fonts/Amatic_SC/AmaticSC-Regular.ttf") format("truetype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -18,9 +23,7 @@
   --color-bg-secondary: rgb(88, 75, 79);
   --color-bg-tertiary: #343a41;
 
-  /* Navigation */
-
-  /* Accent Colors */
+  /* Accent */
   --color-accent-yellow: #f2c94c;
   --color-accent-orange: #f2994a;
   --color-accent-teal: #5fb3a9;
@@ -32,229 +35,192 @@
   --color-text-three: rgb(35, 34, 34);
 
   /* Borders */
-  --color-border: rgba(92, 89, 92, 0.50);
+  --color-border: rgba(92, 89, 92, 0.5);
 
   /* Card */
   --color-card: #2c3138;
 }
 
+
 /* ===============================
    BASE STYLES
 ================================= */
 
-@layer base {
-  html {
-
-  }
-
-  body {
-    @apply min-h-screen antialiased;
- 
-  p{
-    font: 17px / 2.7 normal normal;
-    font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
-       color: var(--color-text-primary);
-    letter-spacing: 1px; 
-  }
-
-  h1 {
-    font-size: 48px;
-    letter-spacing: 4px; 
-    font-family: "AmaticSC";
-    color: var(--color-text-secondary);
-  }
-
-  h2, h3, h4 {
-    font: 45px / 2.0 200 normal;
-    font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
-    color: var(--color-text-secondary);
-  }
-
-   }
+body {
+  @apply min-h-screen antialiased;
 }
 
+p {
+  font: 17px / 2.7 normal normal;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--color-text-primary);
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 48px;
+  letter-spacing: 4px;
+  font-family: "AmaticSC";
+  color: var(--color-text-secondary);
+}
+
+h2,
+h3,
+h4 {
+  font: 45px / 2 200 normal;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--color-text-secondary);
+}
+
+
 /* ===============================
-   CaRD STYLES
+   CARD STYLES
 ================================= */
 
-@layer components {
+.atom-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
 
-  .c-card {
-    
-  }
+  @apply rounded-xl shadow-xl backdrop-blur-md;
+
+  display: inline-flex;
+  list-style: none;
+  margin: 4em 0 0;
+  padding: 0;
+}
+
+.b-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+
+  @apply rounded-xl backdrop-blur-md;
+
+  list-style: none;
+  margin: 4em 0 0;
+  padding: 1em;
+}
 
 
-  /* Card container (download panel style) */
-  .atom-card {
-    background: var(--color-card);
-    border: 1px solid var(--color-border);
-    @apply rounded-xl shadow-xl backdrop-blur-md;
-    display: inline-flex;
-    list-style: none;
-    margin: 4em 0 0;
-    padding: 0;
-  }
+/* ===============================
+   BUTTONS
+================================= */
 
-  /* Primary button (download button) */
-  .btn-atom {
-    background: var(--color-accent-yellow);
-    color: #1f242b;
-    @apply font-semibold px-6 py-3 rounded-lg shadow-md transition;
-  }  
+.btn-atom {
+  background: var(--color-accent-yellow);
+  color: #1f242b;
 
-  .b-card {
-    background: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-    list-style: none;
-    margin: 4em 0 0;
-    padding: 1em;
-        @apply rounded-xl backdrop-blur-md;
-  }
-  
+  @apply font-semibold px-6 py-3 rounded-lg shadow-md transition;
+}
+
+.btn-atom:hover {
+  background: #ffd86b;
+  transform: translateY(-1px);
+}
+
+.btn-atom:focus {
+  background: transparent;
+  border: 1px solid #ffd86b;
+  transform: translateY(-1px);
+}
+
 .btn-b {
   background: transparent;
   color: var(--color-text-primary);
-  border: 1px solid  #2ab308;
+  border: 1px solid #2ab308;
 }
 
 .btn-b:focus {
-background:transparent;
-border: solid 1px  #ffd86b;
-transform: translateY(-1px);
-  }
+  background: transparent;
+  border: 1px solid #ffd86b;
+  transform: translateY(-1px);
+}
 
 .btn-b1 {
   background: transparent;
   color: var(--color-text-primary);
-  border: 1px solid  #b30825;
-
+  border: 1px solid #b30825;
 }
 
 .btn-b1:focus {
-background:transparent;
-border: solid 1px  #6e6bff;
-transform: translateY(-1px);
-  }
+  background: transparent;
+  border: 1px solid #6e6bff;
+  transform: translateY(-1px);
+}
 
-  .btn-atom:hover {
-    background: #ffd86b;
-    transform: translateY(-1px);
-  }
-
-    .btn-atom:focus {
-    background:transparent;
-    border: solid 1px  #ffd86b;
-    transform: translateY(-1px);
-  }
-
-  /* Secondary accent text */
-  .accent {
-    color: var(--color-accent-cyan);
-  }
 
 /* ===============================
-   ATOM FOOTER
+   ACCENTS
+================================= */
+
+.accent {
+  color: var(--color-accent-cyan);
+}
+
+
+/* ===============================
+   HEADER / NAVIGATION
+================================= */
+
+.atom-navbar {
+  color: #efeae1;
+  font-size: 14px;
+  height: 43px;
+  padding: 5px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-nav {
+  padding: 2px;
+  border: 1px solid magenta;
+}
+
+.atom-nav-link {
+  color: #d7d2cb;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+
+  cursor: pointer;
+  background: transparent;
+  padding: 1em;
+  border: 1px solid #ff6bf0;
+}
+
+.atom-nav-link:hover {
+  border: 1px solid var(--color-accent-cyan);
+}
+
+.atom-nav-link:focus {
+  border: 1px solid var(--color-accent-orange);
+}
+
+
+/* ===============================
+   SESSION BAR
+================================= */
+
+.session-bar {
+  color: var(--color-bg-primary);
+  font-size: 14px;
+  padding: 5px 0;
+  text-align: center;
+
+  border: 1px solid rgb(18, 155, 18);
+  background-color: rgba(232, 231, 216, 1);
+}
+
+
+/* ===============================
+   FOOTER
 ================================= */
 
 .footer {
   border: 1px solid rgba(92, 86, 49, 0.5);
-    border-radius: 20px;
-
+  border-radius: 20px;
 }
 
-
-  /* ===============================
-   ATOM HEADER
-================================= */
-
-@layer components {
-  
-  /* Top Nav Admin*/
-  .admin-nav{
-    padding: 2px;
-    border: solid 1px magenta;
-  }
-  /* Top Nav */
-  .atom-navbar {
-    color: #efeae1;
-    font-size: 14px;
-    height: 43px;
-    padding: 5px 0;
-    text-align: left;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-
-  .atom-nav-link{
-    color: #d7d2cb;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    transition: color 0.2s ease;
-    cursor: pointer;
-    background:transparent;
-    padding: 1em;
-    border: solid 1px  #ff6bf0;
-
-  .atom-nav-link:hover {
-    background:transparent;
-    border: solid 1px var(--color-accent-cyan);
-  }
-
-  .atom-nav-link:focus {
-    background:transparent;
-   border: solid 1px var(--color-accent-orange);
-  }
-  }
-
-  .session-bar {
-    color: var(--color-bg-primary);
-    font-size: 14px;
-    padding: 5px 0;
-    text-align: center;
-    border: 1px solid rgb(150, 41, 96);
-    background-color: rgba(232, 231, 216, 1);
-  }
-
-}
-
-}
 
 /* ===============================
    UTILITIES
 ================================= */
-
-@layer utilities {
-
-  /* Subtle radial highlight used behind atom logo */
-  .atom-glow {
-    background: radial-gradient(
-      circle,
-      rgba(242,201,76,0.12) 0%,
-      rgba(242,201,76,0.05) 35%,
-      transparent 70%
-    );
-  }
-
-  /* Circular tech UI ring effect */
-  .tech-ring {
-    border: 2px solid rgba(242,201,76,0.35);
-    box-shadow:
-      0 0 12px rgba(242,201,76,0.25),
-      inset 0 0 10px rgba(242,201,76,0.2);
-  }
-
-  /* Soft glass effect */
-  .glass {
-    backdrop-filter: blur(10px);
-    background: rgba(44,49,56,0.7);
-  }
-
-}
-
-.member-profile p, h1{
-  color: var(--color-text-primary); 
-}
-
-.member-profile-form input{
-  color: var(--color-text-primary);
-}

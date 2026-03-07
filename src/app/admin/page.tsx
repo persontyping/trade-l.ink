@@ -1,6 +1,5 @@
 import MetricWidget from "@/components/Admin/SessionsPanel"
 
-
 export default function AdminPage() {
   return (
     <section className="grid grid-cols-3 gap-6 p-8">
