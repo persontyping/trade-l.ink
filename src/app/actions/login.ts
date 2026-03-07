@@ -10,7 +10,7 @@ export default async function loginAction(formData: FormData) {
 
   // Handle update details directly
   if (action === "updateDetails") {
-    return { redirectTo: `/auth/login?email=${encodeURIComponent(email)}` };
+    return { redirectTo: `/auth/callback?email=${encodeURIComponent(email)}` };
   }
 
   // Handle magic link

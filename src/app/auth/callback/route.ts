@@ -16,16 +16,17 @@ import { cookies } from 'next/headers';
  */
 
 export async function GET(request: NextRequest) {
+    
+
     console.log("----- CALLBACK HIT -----");
     console.log("Full URL:", request.url);
-    console.log("Method:", request.method);
-
     const url = new URL(request.url);
     const token_hash = url.searchParams.get('token_hash');
-
-
+    console.log("url:", url);
+    console.log("token_hash", token_hash);
+//  Exchanges the token_hash for a session server-side using supabase.auth.verifyOtp(...)
     const type = (url.searchParams.get('type') ?? '') as EmailOtpType | '';
-    const nextPath = url.searchParams.get('next') ?? '/account';
+    const nextPath = url.searchParams.get('next') ?? '/';
 
     console.log("token_hash:", token_hash);
 
