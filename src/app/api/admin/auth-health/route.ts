@@ -1,44 +1,51 @@
 import { createClient } from "@supabase/supabase-js"
 
-export const runtime = "nodejs"
-export const dynamic = "force-dynamic"
-
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 )
 
 export async function GET() {
-  const { data, error } = await supabase
-    .from("auth.sessions") // <- schema included here
-    .select("user_id, not_after, updated_at")
+  try {
+    // fetch all users
+    const { data, error } = await supabase.auth.admin.listUsers({ limit: 1000 })
 
-  if (error) {
-    return Response.json({ error: error.message }, { status: 500 })
+    if (error) throw error
+    // normalize the array safely
+    const usersArray: any[] = Array.isArray(data)
+      ? data
+      : Array.isArray(data?.users)
+        ? data.users
+        : []
+
+    console.log("usersArray length:", usersArray.length)
+
+    let validSessionsCount = 0
+    let staleSessionsCount = 0
+    let expiringSoonCount = 0
+    const userIds = new Set<string>()
+    const now = Date.now()
+
+    usersArray.forEach(user => {
+      if (user.last_sign_in_at) {
+        const lastSignIn = new Date(user.last_sign_in_at).getTime()
+        const sessionAge = now - lastSignIn
+
+        if (sessionAge < 30 * 60 * 1000) validSessionsCount += 1
+        if (sessionAge > 30 * 60 * 1000) staleSessionsCount += 1
+        if (sessionAge < 10 * 60 * 1000) expiringSoonCount += 1
+      }
+    })
+
+    return Response.json({
+      validSessions: validSessionsCount,
+      uniqueUsers: userIds.size,
+      staleSessions: staleSessionsCount,
+      expiringSoon: expiringSoonCount
+    })
+
+  } catch (err: any) {
+    console.error("Supabase admin error:", err)
+    return Response.json({ error: err.message || "Internal server error" }, { status: 500 })
   }
-
-  const sessions = data ?? []
-  const now = Date.now()
-
-  const valid = sessions.filter(s =>
-    new Date(s.not_after).getTime() > now
-  )
-
-  const expiringSoon = valid.filter(s =>
-    new Date(s.not_after).getTime() - now < 10 * 60 * 1000
-  )
-
-  const stale = valid.filter(s =>
-    new Date(s.updated_at).getTime() < now - 30 * 60 * 1000
-  )
-
-  const users = new Set(valid.map(s => s.user_id))
-
-  return Response.json({
-    validSessions: valid.length,
-    uniqueUsers: users.size,
-    expiringSoon: expiringSoon.length,
-    staleSessions: stale.length,
-    sessionsPerUser: valid.length / Math.max(users.size, 1)
-  })
 }
