@@ -1,68 +1,40 @@
-'use client';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { supabase } from '@/lib/supabase/browser';
-import type { User } from '@supabase/supabase-js';
-import LogoutButton from './Auth/LogoutButton';
-
+import Link from "next/link";
+import LogoutButton from "./Auth/LogoutButton";
 
 export default function Header() {
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    // Fetch session on mount
-    const fetchSession = async () => {
-      const { data } = await supabase.auth.getSession();
-      setUser(data.session?.user ?? null);
-    };
-
-    fetchSession();
-
-    // Subscribe to auth changes
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    // Clean up subscription
-    return () => listener.subscription.unsubscribe();
-  }, []);
-
   return (
     <section>
       <header className="atom-navbar sticky top-0 z-50 w-full">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-12 flex items-center justify-between">
-
+          
+          {/* Logo */}
           <Link href="/" className="logo font-bold text-lg">
             🌈 TRADE-L.INK
           </Link>
 
+          {/* Main Navigation */}
           <nav className="flex items-center gap-6">
             <Link href="/home">HOME</Link>
+            <Link href="/dashboard">DASHBOARD</Link>
 
-            {user ? (
-              <>
-                <Link href="/dashboard">DASHBOARD</Link>
-                <LogoutButton />
-              </>
-            ) : (
-              <>
-                <Link href="/auth/login">LOGIN</Link>
-                <Link href="/auth/signup">SIGN UP</Link>
-              </>
-            )}
+            <Link href="/auth/login">LOGIN</Link>
+            <Link href="/auth/signup">SIGN UP</Link>
+
+            <LogoutButton />
           </nav>
-          <nav className="admin-nav flex items-center gap-6 ">
+
+          {/* Admin Navigation */}
+          <nav className="admin-nav flex items-center gap-6">
             <Link href="/admin">ADMIN MODE</Link>
           </nav>
+
         </div>
       </header>
 
-      {/* Optional session bar */}
-      {user && (
-        <div className="session-bar sticky top-12 z-40 w-full atom-nav-link">
-          Logged in as {user.user_metadata?.full_name || user.email}
-        </div>
-      )}
+      {/* Session Bar */}
+      <div className="session-bar sticky top-12 z-40 w-full atom-nav-link">
+        <h4>Logged in as...</h4>
+      </div>
     </section>
   );
 }
