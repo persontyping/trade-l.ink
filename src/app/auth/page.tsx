@@ -1,3 +1,3 @@
-export default function AuthChek(){
+export default function AuthPage(){
     
 }
