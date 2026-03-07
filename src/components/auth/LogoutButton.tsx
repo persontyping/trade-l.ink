@@ -1,5 +1,5 @@
 'use client';
-import { logout } from '@/app/actions/killSession'
+import { logout } from '@/app/actions/logout'
 
 export default function LogoutButton() {
   return (

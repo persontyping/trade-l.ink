@@ -31,3 +31,7 @@ export async function getUserFromSupabase() {
 
   return user;
 }
+
+export { createServerClient }
+
+

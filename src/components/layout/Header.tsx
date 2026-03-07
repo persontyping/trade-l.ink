@@ -38,12 +38,10 @@ export default function Header() {
 
           <nav className="flex items-center gap-6">
             <Link href="/home">HOME</Link>
-            <Link href="/about">ABOUT</Link>
-
+ 
             {user ? (
               <>
                 <Link href="/dashboard">DASHBOARD</Link>
-                <Link href="/dashboard/profile">PROFILE</Link>
                 <LogoutButton/>
               </>
             ) : (

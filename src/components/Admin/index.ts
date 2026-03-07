@@ -1,7 +1,3 @@
-export function UsersPanel() {
-  return (
-    <div className="p-4 border rounded-lg">
-      Total Users
-    </div>
-  )
-}
+export * from "./OnlineUsersPanel"
+export * from "./UsersPanel"
+export * from "./SessionsPanel"
