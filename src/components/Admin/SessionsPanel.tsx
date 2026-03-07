@@ -47,16 +47,16 @@ export default function MetricWidget({
   }, [])
 
   return (
-    <div className="border rounded-xl p-4 shadow-sm bg-white w-64">
+    <div className="border rounded-xl p-4  w-64">
 
       <div className="flex justify-between items-center mb-2">
-        <h3 className="font-medium text-sm text-gray-600">
+        <h3 className="text-yellow-100 text-lg">
           {title}
         </h3>
 
         <button
           onClick={fetchMetric}
-          className="text-xs px-2 py-1 border rounded hover:bg-gray-100"
+          className=" px-2 py-1 border pink rounded"
         >
           {loading ? "..." : "Refresh"}
         </button>

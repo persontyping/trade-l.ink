@@ -19,6 +19,8 @@ export async function GET() {
         : []
 
     console.log("usersArray length:", usersArray.length)
+        console.log("Normalized usersArray:", usersArray)
+
 
     let validSessionsCount = 0
     let staleSessionsCount = 0
@@ -41,7 +43,9 @@ export async function GET() {
       validSessions: validSessionsCount,
       uniqueUsers: userIds.size,
       staleSessions: staleSessionsCount,
-      expiringSoon: expiringSoonCount
+      expiringSoon: expiringSoonCount,
+      openSessions: usersArray.length,
+   
     })
 
   } catch (err: any) {
