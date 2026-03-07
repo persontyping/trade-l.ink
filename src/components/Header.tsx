@@ -1,5 +1,5 @@
 import Link from "next/link";
-import LogoutButton from "./Auth/LogoutButton";
+import LogoutButton from '@/components/Auth/LogoutButton';
 
 export default function Header() {
   return (
