@@ -1,5 +1,4 @@
 import Link from "next/link";
-import LogoutButton from '@/components/Auth/LogoutButton';
 
 export default function Header() {
   return (
@@ -19,8 +18,6 @@ export default function Header() {
 
   
             <Link href="/auth/signup">SIGN UP</Link>
-
-            <LogoutButton />
           </nav>
 
           {/* Admin Navigation */}
