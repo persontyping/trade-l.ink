@@ -1,5 +1,5 @@
 'use client';
-import LoginCard from "@/components/auth/LoginCard";
+import LoginCard from "@/components/Auth/LoginCard";
 console.log(`${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`);
 
 export default function HomePage() {

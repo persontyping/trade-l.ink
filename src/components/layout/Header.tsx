@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase/browser';
 import type { User } from '@supabase/supabase-js';
-import LogoutButton  from "@/components/client/KillSesh";
+import LogoutButton from '../Auth/LogoutButton';
 
 
 export default function Header() {
@@ -44,7 +44,7 @@ export default function Header() {
               <>
                 <Link href="/dashboard">DASHBOARD</Link>
                 <Link href="/dashboard/profile">PROFILE</Link>
-      <LogoutButton />
+                <LogoutButton/>
               </>
             ) : (
               <>

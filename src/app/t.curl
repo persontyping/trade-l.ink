@@ -1,0 +1,9 @@
+curl -X POST "https://eqhntkylreubeenwqvyw.supabase.co/auth/v1/otp" \
+  -H "apikey: 'sb_publishable_lYzZJtRx2hOGFdHPpkZfMA_bcIhJe6B' \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "persontyping@pm.me",
+    "create_user": true
+  }'
+
+ /auth/confirm?token_hash={{ .TokenHash }}&type=email
