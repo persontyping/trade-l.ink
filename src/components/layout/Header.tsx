@@ -38,11 +38,11 @@ export default function Header() {
 
           <nav className="flex items-center gap-6">
             <Link href="/home">HOME</Link>
- 
+
             {user ? (
               <>
                 <Link href="/dashboard">DASHBOARD</Link>
-                <LogoutButton/>
+                <LogoutButton />
               </>
             ) : (
               <>
@@ -50,6 +50,9 @@ export default function Header() {
                 <Link href="/auth/signup">SIGN UP</Link>
               </>
             )}
+          </nav>
+          <nav className="admin-nav flex items-center gap-6 ">
+            <Link href="/admin">ADMIN MODE</Link>
           </nav>
         </div>
       </header>

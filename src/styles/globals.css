@@ -168,8 +168,13 @@ transform: translateY(-1px);
 ================================= */
 
 @layer components {
-
-  /* Main navigation */
+  
+  /* Top Nav Admin*/
+  .admin-nav{
+    padding: 2px;
+    border: solid 1px magenta;
+  }
+  /* Top Nav */
   .atom-navbar {
     color: #efeae1;
     font-size: 14px;
