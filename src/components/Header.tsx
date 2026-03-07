@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase/browser';
 import type { User } from '@supabase/supabase-js';
-import LogoutButton from '../Auth/LogoutButton';
+import LogoutButton from './Auth/LogoutButton';
 
 
 export default function Header() {
