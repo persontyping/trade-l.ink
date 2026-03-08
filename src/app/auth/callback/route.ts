@@ -10,41 +10,27 @@ export async function GET(request: NextRequest) {
   const type = (url.searchParams.get('type') ?? '') as EmailOtpType | '';
   const nextPath = url.searchParams.get('next') ?? '/';
 
-  // Redirect target after verification
   const redirectTo = new URL(nextPath, url);
   redirectTo.searchParams.delete('token_hash');
   redirectTo.searchParams.delete('type');
   redirectTo.searchParams.delete('next');
 
-  // Basic validation
   if (!token_hash || !type) {
     return NextResponse.redirect(new URL('/auth/error', url), 302);
   }
 
-  // ✅ Server-side cookie store (synchronous, NOT a Promise)
+  // ✅ Just pass the cookie store directly — no getAll/setAll needed
   const cookieStore = cookies();
 
-  // Minimal Supabase server client using cookie adapter
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     {
-      cookies: {
-        // get cookie by name
-        get: (name: string) => {
-          const c = cookieStore.get(name);
-          return c ? { name: c.name, value: c.value } : null;
-        },
-        // set cookie individually
-        set: (name: string, value: string, options?: Parameters<typeof cookieStore.set>[1]) => {
-          cookieStore.set(name, value, options);
-        },
-      },
+      cookies: cookieStore, // Pass the Next.js cookie store directly
     }
   );
 
   try {
-    // Verify OTP and create Supabase session
     const { error } = await supabase.auth.verifyOtp({
       token_hash,
       type,
@@ -55,7 +41,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL('/auth/error', url), 302);
     }
 
-    // Optional: custom cookie after login
+    // Optional: set a custom cookie
     // cookieStore.set('my-token', 'abc123', { httpOnly: true, path: '/', maxAge: 60 * 60 * 24 });
 
     return NextResponse.redirect(redirectTo, 302);
