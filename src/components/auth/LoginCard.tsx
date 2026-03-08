@@ -29,7 +29,7 @@ export default function LoginCard({
   title = "Login",
   signupUrl = "/auth/signup",
   className = "",
-  onSuccessRedirect = "/dashboard",
+ // onSuccessRedirect = "/dashboard",
 }: LoginCardProps) {
 
   const [modal, setModal] = useState<{ email: string } | null>(null);

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 
 type MetricWidgetProps = {
   title: string
@@ -13,93 +13,47 @@ export default function MetricWidget({
   title,
   endpoint,
   valueKey,
-  refreshInterval
+  refreshInterval = 30000,
 }: MetricWidgetProps) {
 
   const [value, setValue] = useState<number | string>("—")
   const [loading, setLoading] = useState(false)
 
-  const fetchMetric = async () => {
+  // memoized fetch function to avoid re-creating on every render
+  const fetchMetric = useCallback(async () => {
     try {
       setLoading(true)
-
       const res = await fetch(endpoint)
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
-
-      setValue(data[valueKey])
-
+      setValue(data[valueKey] ?? "—")
     } catch (err) {
       console.error(err)
       setValue("error")
     } finally {
       setLoading(false)
     }
-  }
+  }, [endpoint, valueKey])
 
+  // fetch immediately and set up interval
   useEffect(() => {
-    fetchMetric()
-
-    if (!refreshInterval) return
+    fetchMetric() // initial fetch
 
     const interval = setInterval(fetchMetric, refreshInterval)
+    return () => clearInterval(interval) // cleanup on unmount or deps change
+  }, [fetchMetric, refreshInterval])
 
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <div className="border rounded-xl p-4  w-64">
-
-      <div className="flex justify-between items-center mb-2">
-        <h3 className="text-yellow-100 text-lg">
-          {title}
-        </h3>
-
-        <button
-          onClick={fetchMetric}
-          className=" px-2 py-1 border pink rounded"
-        >
-          {loading ? "..." : "Refresh"}
-        </button>
-      </div>
-
-      <div className="text-3xl font-semibold">
-        {value}
-      </div>
-
+  return (<div className="border rounded-xl p-4 w-64">
+    <div className="flex justify-between items-center mb-2">
+      <h3 className="text-yellow-100 text-lg">{title}</h3>
+      <button
+        onClick={fetchMetric}
+        className="px-2 py-1 border pink rounded"
+      >
+        {loading ? "..." : "Refresh"}
+      </button>
     </div>
+    <div className="text-3xl ">{value}</div>
+  </div>
   )
 }
-
-/** 
-  import MetricWidget from "@/components/admin/MetricWidget"
-
-export default function AdminDashboard() {
-
-  return (
-    <div className="flex gap-4 flex-wrap">
-
-      <MetricWidget
-        title="Valid Sessions"
-        endpoint="/api/admin/auth-health"
-        valueKey="validSessions"
-        refreshInterval={30000}
-      />
-
-      <MetricWidget
-        title="Active Users"
-        endpoint="/api/admin/auth-health"
-        valueKey="uniqueUsers"
-        refreshInterval={30000}
-      />
-
-      <MetricWidget
-        title="Stale Sessions"
-        endpoint="/api/admin/auth-health"
-        valueKey="staleSessions"
-        refreshInterval={30000}
-      />
-
-    </div>
-  )
-}
-  ****/

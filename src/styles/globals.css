@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-/* ===============================
-   FONTS
-================================= */
+@layer reset, base, components, utilities;
 
 @font-face {
   font-family: "AmaticSC";
@@ -14,28 +12,43 @@
 
 
 /* ===============================
+   FONTS
+================================= */
+
+/* ===============================
    THEME VARIABLES
 ================================= */
 
 :root {
   /* Background */
-  --color-bg-primary: rgb(35, 34, 34);
+  --color-bg-dark: rgb(35, 34, 34);
   --color-bg-secondary: rgb(88, 75, 79);
-  --color-bg-tertiary: #343a41;
+  --color-bg-light: rgb(234, 231, 200);
 
   /* Accent */
-  --color-accent-yellow: #f2c94c;
-  --color-accent-orange: #f2994a;
-  --color-accent-teal: #5fb3a9;
-  --color-accent-cyan: #56ccf2;
+  --accent-yellow: rgb(242, 201, 76);
+  --accent-teal: #5fb3a9;
+  --accent-cyan: #56ccf2;
+  --accent-mauve: #bf5af5;
+  --accent-pink: #ec97dd;
+  
+  --mid-purple: #5666f2;
+
+  --bright-pink: #f8178f;
+  --bright-green: #00ae0f;
+  --bright-violet: #9616e0;
+    --brihjt-orange: #f8a93a;
+
 
   /* Text */
-  --color-text-primary: #e6e1d9;
-  --color-text-secondary: #736168;
-  --color-text-three: rgb(35, 34, 34);
+  --color-text-light: #f3ede2;
+  --color-text-secondary: #aaab86;
+--color-text-dark: rgb(26, 25, 25);
 
   /* Borders */
-  --color-border: rgba(92, 89, 92, 0.5);
+  --color-border-pb: rgba(92, 89, 92, 0.5);
+  --color-border-yb: rgba(89, 86, 52, 0.5);
+  --color-border-lo: rgba(253, 236, 149, 0.5);
 
   /* Card */
   --color-card: #2c3138;
@@ -46,12 +59,37 @@
    BASE STYLES
 ================================= */
 
-body {
-  @apply min-h-screen antialiased;
+@layer reset, base, components;
+
+@layer reset {
+  * {
+    margin: 0;
+  }
 }
 
+@layer base {
+  body {
+    background-color: var(--color-bg-dark);
+    color: var( --color-text-primary);;
+    font-family: sans-serif;
+  }
+
+  .main-container{
+     background-color: var(--color-bg-dark);
+    color: var( --color-text-primary);;
+    font-family: sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    padding: 1rem;
+  }
+}
+
+
 p {
-  font: 17px / 2.7 normal normal;
+  font: 12px / 2.7 normal normal;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--color-text-primary);
   letter-spacing: 1px;
@@ -90,7 +128,7 @@ h4 {
 }
 
 .b-card {
-  background: var(--color-bg-primary);
+  background: var(--color-bg-dark);
   border: 1px solid var(--color-border);
 
   @apply rounded-xl backdrop-blur-md;
@@ -161,13 +199,14 @@ h4 {
    HEADER / NAVIGATION
 ================================= */
 
-.atom-navbar {
-  color: #efeae1;
+.header-a {
+  color: var(--color-text-light);
   font-size: 14px;
-  height: 43px;
-  padding: 5px 0;
+  height: 28px;
+  padding: 3px 0;
+  margin-bottom:3px;
   text-align: left;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-yb);
 }
 
 .admin-nav {
@@ -175,12 +214,12 @@ h4 {
   border: 1px solid magenta;
 }
 
-.atom-nav-link {
+.header-a-link {
   color: #d7d2cb;
   font-weight: 300;
   letter-spacing: 0.02em;
   transition: color 0.2s ease;
-
+  height: 28px;
   cursor: pointer;
   background: transparent;
   padding: 1em;
@@ -200,14 +239,13 @@ h4 {
    SESSION BAR
 ================================= */
 
-.session-bar {
-  color: var(--color-bg-primary);
-  font-size: 14px;
+.session-nav-b {
+  color: var(--color-text-dark);
   padding: 5px 0;
   text-align: center;
 
-  border: 1px solid rgb(18, 155, 18);
-  background-color: rgba(232, 231, 216, 1);
+  border: 1px solid var(--color-border-lo);
+  background-color: var(--color-bg-light);
 }
 
 
@@ -216,8 +254,9 @@ h4 {
 ================================= */
 
 .footer {
-  border: 1px solid rgba(92, 86, 49, 0.5);
-  border-radius: 20px;
+  color: var(--color-text-light);
+  border: 1px solid var(--color-border-pb); /* 30% opacity */
+  border-radius: 10px;
 }
 
 

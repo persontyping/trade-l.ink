@@ -1,13 +1,13 @@
 import Link from "next/link";
 
 export default function Header() {
-  return (
-    <section>
-      <header className="atom-navbar sticky top-0 z-50 w-full">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-12 flex items-center justify-between">
+  return(
+     <section>
+      <header className="header-a sticky top-0 z-50 w-full">
+        <div className="max-w-7xl mx-auto px-6 tedxt-sm flex items-center justify-between">
           
       
-          <Link href="/" className="logo font-bold text-lg">
+          <Link href="/" className="header-a logo font-bold text-sm">
             🌈 TRADE-L.INK
           </Link>
 
@@ -33,5 +33,6 @@ export default function Header() {
         <h4>Logged in as...</h4>
       </div>
     </section>
-  );
-}
+  );}
+
+   
